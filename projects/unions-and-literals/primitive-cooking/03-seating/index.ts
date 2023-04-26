@@ -1,9 +1,10 @@
 // Please fill in any missing type annotations here...
 const headOfTable = "Me!";
-let adjacentLeft;
-let adjacentRight;
-let furtherLeft;
-let furtherRight;
+type People = "Susie" | "Tommy" | "Angelica" | "Chuckie" | "Kimi";
+let adjacentLeft: People | undefined;
+let adjacentRight: People | undefined;
+let furtherLeft: People | undefined;
+let furtherRight: People | undefined;
 
 // I always invite Susie and Tommy! ♥
 if (Math.random() > 0.5) {
@@ -37,7 +38,7 @@ if (furtherLeft === "Angelica" && furtherRight !== "Chuckie") {
 
 // If I invited Chuckie but not Angelica, I'll invite Timmy. They get along well with Chuckie but not Angelica.
 if (furtherLeft === "Chuckie") {
-	furtherRight = "Timmy";
+	furtherRight = "Tommy";
 }
 
 console.log(`At the head of the table is... ${headOfTable}`);
