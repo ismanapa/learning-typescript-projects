@@ -1,5 +1,97 @@
 // Write your types here! ✨
 
+export type MotionBase = {
+	from: "defendant" | "plaintiff";
+	reason: string;
+};
+
+export type PreTrialMotion = MotionBase & {
+	classification: "dismiss" | "suppress" | "venue";
+	step: "pre-trial";
+};
+
+export type PostTrialMotion = MotionBase & {
+	classification: "acquittal" | "correction" | "new trial";
+	step: "post-trial";
+};
+
+export type TrialMotion = PostTrialMotion | PreTrialMotion;
+
+export type AllowedMotion = TrialMotion & {
+	deliberationHours: number;
+	status: "allowed";
+};
+
+export type DeniedMotion = TrialMotion & {
+	annoyedJustice: boolean;
+	deliberationHours: number;
+	status: "denied";
+};
+
+export type PatataMotion = TrialMotion & {
+	status: "patata";
+	numberOfPatatas: number;
+};
+
+export type PendingMotion = TrialMotion & {
+	estimatedDeliberationHours: number;
+	status: "pending";
+};
+
+export type Motion =
+	| AllowedMotion
+	| DeniedMotion
+	| PendingMotion
+	| PatataMotion;
+
+function GiveMeMotion(): Motion {
+	return {
+		annoyedJustice: true,
+		classification: "acquittal",
+		deliberationHours: 1,
+		from: "defendant",
+		reason: "The heretofore document had dried ink on it.",
+		status: "denied",
+		step: "post-trial",
+	};
+}
+const motion = GiveMeMotion();
+
+if (motion.status === "denied") {
+	motion.annoyedJustice;
+}
+
+if ("annoyedJustice" in motion) {
+	motion.annoyedJustice;
+}
+
+if (isDeniedMotion(motion)) {
+	motion.annoyedJustice;
+}
+
+function isDeniedMotion(motion: Motion): motion is DeniedMotion {
+	return motion.status === "denied";
+}
+
+switch (motion.status) {
+	case "denied":
+		motion.annoyedJustice;
+		console.log("dasdasdas");
+		break;
+	case "allowed":
+		break;
+	case "pending":
+		break;
+	case "patata":
+		break;
+	default:
+		neverCheck(motion);
+}
+
+function neverCheck(never: never) {
+	throw new Error("never value is not never");
+}
+
 export const motions: Motion[] = [
 	{
 		annoyedJustice: true,
