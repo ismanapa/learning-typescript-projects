@@ -4,7 +4,7 @@ while (true) {
 	// Each group of guests will be size 5-10
 	const guestsToAssign = Math.floor(Math.random() * 5) + 5;
 	let activity; // Those were some nice type annotations you had here!
-	let capacity; // It'd be a shame if we ... *erased* them! 😈
+	let capacity: number; // It'd be a shame if we ... *erased* them! 😈
 	let requiresSupplies;
 
 	switch (Math.floor(Math.random() * 5)) {
@@ -15,7 +15,7 @@ while (true) {
 			break;
 		case 1:
 			activity = "face painting";
-			capacity = "1";
+			capacity = 1;
 			requiresSupplies = true;
 			break;
 		case 2:
